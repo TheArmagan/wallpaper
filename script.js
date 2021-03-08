@@ -100,7 +100,7 @@ function onAudio(audioArray) {
 
   if (debugMode == 1 || debugMode == 3) {
     infoElms.other.style.display = "block";
-    infoElms.other.innerHTML = `${Array(64).fill("").map((_, i) => `${i.toString().padStart(2, "0")} &gt; ${(audio.left[i] * 100).toFixed(0).toString().padStart(3, '_')} ${(audio.middle[i] * 100).toFixed(0).toString().padStart(3, '_')} ${(audio.right[i] * 100).toFixed(0).toString().padStart(3, '_')}`).join("<br>")}<br>Sum > ${(audio.sum * 100).toFixed(0)}`;
+    infoElms.other.innerHTML = `Wallpaper By TheArmagan<br/>${Array(64).fill("").map((_, i) => `${i.toString().padStart(2, "0")} &gt; ${(audio.left[i] * 100).toFixed(0).toString().padStart(3, '_')} ${(audio.middle[i] * 100).toFixed(0).toString().padStart(3, '_')} ${(audio.right[i] * 100).toFixed(0).toString().padStart(3, '_')}`).join("<br>")}<br>Sum > ${(audio.sum * 100).toFixed(0)}`;
   } else {
     infoElms.other.style.display = "none";
   }

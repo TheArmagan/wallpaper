@@ -77,6 +77,21 @@
         "text": "Background Image",
         "type": "file",
         "order": 108
+      },
+      "text_2": {
+        "type": "text",
+        "text": "<h4>⸺⸺⸺⸺⸺⸺⸺</h4>",
+        "order": 109
+      },
+      "_text2": {
+        "text": "<h3>Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.0</h3>",
+        "type": "text",
+        "order": 110
+      },
+      "_text3": {
+        "text": "",
+        "type": "text",
+        "order": 111
       }
     }
   }
