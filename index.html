@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>thearmagan.github.io</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./lib/gsap.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="visualizers">
+        <div class="bars bars-left"></div>
+        <div class="bars bars-middle">
+          <div class="middle-ball"></div>
+        </div>
+        <div class="bars bars-right"></div>
+      </div>
+      <div class="statistics">
+        <div class="info left">
+          <p class="other debug">---</p>
+        </div>
+        <div class="info right">
+          <p class="low debug">---</p>
+          <p class="mid debug">---</p>
+          <p class="hig debug">---</p>
+          <p class="max debug">---</p>
+        </div>
+        <div
+          class="debug-button"
+          onclick="debugMode = (++debugMode <= 3 ? debugMode : 0)"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

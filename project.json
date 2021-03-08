@@ -1,0 +1,83 @@
+{
+  "contentrating": "Everyone",
+  "title": "Responsive Circle With Bars",
+  "file": "index.html",
+  "general": {
+    "supportsaudioprocessing": true,
+    "properties": {
+      "text__": {
+        "type": "text",
+        "text": "<h4>⸺ Background Style ⸺</h4>",
+        "order": 100
+      },
+      "backgroundMode": {
+        "text": "Background Mode",
+        "type": "combo",
+        "options": [
+          {
+            "label": "Custom Color",
+            "value": "CUSTOM_COLOR"
+          },
+          {
+            "label": "Custom Image",
+            "value": "CUSTOM_IMAGE"
+          }
+        ],
+        "value": "CUSTOM_COLOR",
+        "order": 101
+      },
+      "backgroundColor": {
+        "condition": "backgroundMode.value == 'CUSTOM_COLOR'",
+        "text": "Background Color",
+        "type": "color",
+        "order": 102
+      },
+      "backgroundImage": {
+        "condition": "backgroundMode.value == 'CUSTOM_IMAGE'",
+        "text": "Background Image",
+        "type": "file",
+        "order": 103
+      },
+      "text_": {
+        "type": "text",
+        "text": "<h4>⸺ Ball Style ⸺⸺⸺</h4>",
+        "order": 104
+      },
+      "ballBackgroundMode": {
+        "text": "Background Mode",
+        "type": "combo",
+        "options": [
+          {
+            "label": "Custom Color",
+            "value": "CUSTOM_COLOR"
+          },
+          {
+            "label": "Custom Image",
+            "value": "CUSTOM_IMAGE"
+          }
+        ],
+        "value": "CUSTOM_COLOR",
+        "order": 105
+      },
+      "ballBackgroundTransparent": {
+        "condition": "ballBackgroundMode.value == 'CUSTOM_COLOR'",
+        "text": "Transparent Background",
+        "type": "bool",
+        "order": 106,
+        "value": false
+      },
+      "ballBackgroundColor": {
+        "condition": "ballBackgroundMode.value == 'CUSTOM_COLOR' && !ballBackgroundTransparent.value",
+        "text": "Background Color",
+        "type": "color",
+        "order": 107
+      },
+      "ballBackgroundImage": {
+        "condition": "ballBackgroundMode.value == 'CUSTOM_IMAGE'",
+        "text": "Background Image",
+        "type": "file",
+        "order": 108
+      }
+    }
+  }
+}

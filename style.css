@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#app {
+  background-color: #181818;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  background-clip: content-box;
+  background-position: center;
+}
+
+.bars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bars.bars-left {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bars.bars-middle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bars.bars-right {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bar {
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  border-radius: 9999px;
+}
+
+.bar:not(:last-child) {
+  margin-right: 4px;
+}
+
+.middle-ball {
+  z-index: 10000;
+  width: 40vh;
+  height: 40vh;
+  border-radius: 50%;
+  background-color: #151515;
+  -webkit-box-shadow: 0px 0px 36px white;
+          box-shadow: 0px 0px 36px white;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 40vh;
+  background-clip: content-box;
+  background-position: center;
+}
+
+.statistics {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.statistics .info {
+  position: absolute;
+  top: 8px;
+  word-break: break-all;
+  word-wrap: normal;
+  font-family: monospace;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+.statistics .info.left {
+  left: 8px;
+  text-align: left;
+}
+
+.statistics .info.left .other {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.statistics .info.right {
+  right: 8px;
+  text-align: right;
+}
+
+.statistics .debug-button {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 100px;
+  width: 5px;
+  background-color: transparent;
+}
