@@ -5,7 +5,7 @@
   "general": {
     "supportsaudioprocessing": true,
     "properties": {
-      "text__": {
+      "text1": {
         "type": "text",
         "text": "<h4>⸺ Background Style ⸺</h4>",
         "order": 100
@@ -38,7 +38,7 @@
         "type": "file",
         "order": 103
       },
-      "text_": {
+      "text2": {
         "type": "text",
         "text": "<h4>⸺ Ball Style ⸺⸺⸺</h4>",
         "order": 104
@@ -78,18 +78,19 @@
         "type": "file",
         "order": 108
       },
-      "text_2": {
+      "ballDoNotHide": {
+        "text": "Don't Hide The Ball",
+        "type": "bool",
+        "order": 109,
+        "value": false
+      },
+      "text3": {
         "type": "text",
         "text": "<h4>⸺⸺⸺⸺⸺⸺⸺</h4>",
-        "order": 109
-      },
-      "_text2": {
-        "text": "<h3>Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.0</h3>",
-        "type": "text",
         "order": 110
       },
-      "_text3": {
-        "text": "",
+      "text4": {
+        "text": "Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.0</h3>",
         "type": "text",
         "order": 111
       }

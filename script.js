@@ -1,5 +1,4 @@
 /**
- * 20.02.21 - 20:20
  * Code by Kıraç Armağan Önal (thearmagan.github.io)
  */
 
@@ -169,7 +168,7 @@ function onAudio(audioArray) {
   });
 
   gsap.to(".middle-ball", {
-    opacity: `${isLoud ? Math.min(maxVolume * 10, 1) : 0}`,
+    opacity: `${config.ballDoNotHide ? 1 : isLoud ? Math.min(maxVolume * 10, 1) : 0}`,
     duration: 1,
     ease: "linear"
   });
