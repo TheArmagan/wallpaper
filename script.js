@@ -44,16 +44,20 @@ function onConfigChange(_config) {
 
     switch (value?.type) {
       case "color": {
-        let vals = value.value.split(" ").map(i => (Number(i) * 255).toFixed(0));
-        config[key] = `rgb(${vals[0]}, ${vals[1]}, ${vals[2]})`;
+        try {
+          let vals = value.value.split(" ").map(i => (Number(i) * 255).toFixed(0));
+          config[key] = `rgb(${vals?.[0]}, ${vals?.[1]}, ${vals?.[2]})`;
+        } catch {
+          config[key] = "";
+        }
         break;
       };
       case "file": {
-        config[key] = !!value?.value ? `file:///${value.value}` : ""
+        config[key] = !!value?.value ? `file:///${value?.value}` : "";
         break;
       };
       default: {
-        config[key] = value?.value
+        config[key] = value?.value;
       }
     }
 
