@@ -2,6 +2,18 @@
   "contentrating": "Everyone",
   "title": "Fully Audio Reactive Bars And Bass Ball [CUSTOMIZABLE]",
   "file": "index.html",
+  "preview": "preview.jpg",
+  "tags": [
+    "Abstract",
+    "Audio Responsive",
+    "Colors",
+    "RGB"
+  ],
+  "type": "web",
+  "version": 2,
+  "visibility": "public",
+  "workshopid": "2428739120",
+  "workshopurl": "steam://url/CommunityFilePage/2428739120",
   "general": {
     "supportsaudioprocessing": true,
     "properties": {
