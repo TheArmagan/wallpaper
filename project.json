@@ -5,9 +5,9 @@
   "general": {
     "supportsaudioprocessing": true,
     "properties": {
-      "text1": {
+      "_text1": {
         "type": "text",
-        "text": "<h4>⸺ Background Style ⸺</h4>",
+        "text": "<br><br><h4>⸺ Background Style ⸺</h4>",
         "order": 100
       },
       "backgroundMode": {
@@ -30,7 +30,8 @@
         "condition": "backgroundMode.value == 'CUSTOM_COLOR'",
         "text": "Background Color",
         "type": "color",
-        "order": 102
+        "order": 102,
+        "value": "0.094 0.094 0.094"
       },
       "backgroundImage": {
         "condition": "backgroundMode.value == 'CUSTOM_IMAGE'",
@@ -38,9 +39,9 @@
         "type": "file",
         "order": 103
       },
-      "text2": {
+      "_text2": {
         "type": "text",
-        "text": "<h4>⸺ Ball Style ⸺⸺⸺</h4>",
+        "text": "<br><br><h4>⸺ Ball Style ⸺⸺⸺</h4>",
         "order": 104
       },
       "ballBackgroundMode": {
@@ -70,7 +71,8 @@
         "condition": "ballBackgroundMode.value == 'CUSTOM_COLOR' && !ballBackgroundTransparent.value",
         "text": "Background Color",
         "type": "color",
-        "order": 107
+        "order": 107,
+        "value": "0.094 0.094 0.094"
       },
       "ballBackgroundImage": {
         "condition": "ballBackgroundMode.value == 'CUSTOM_IMAGE'",
@@ -84,15 +86,54 @@
         "order": 109,
         "value": false
       },
-      "text3": {
-        "type": "text",
-        "text": "<h4>⸺⸺⸺⸺⸺⸺⸺</h4>",
-        "order": 110
+      "ballGlowColor": {
+        "text": "Glow Color",
+        "type": "color",
+        "order": 110,
+        "value": "0.96 0.96 0.96"
       },
-      "text4": {
+      "_text5": {
+        "type": "text",
+        "text": "<br><br><h4>⸺ Bars Style ⸺⸺⸺</h4>",
+        "order": 111
+      },
+      "barsDoNotChangeSatAndLight": {
+        "text": "Don't Change Bar's Sat & Light",
+        "type": "bool",
+        "order": 112,
+        "value": false
+      },
+      "barsSaturation": {
+        "condition": "barsDoNotChangeSatAndLight.value == true",
+        "text": "Saturation",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "order": 113,
+        "value": 50,
+        "editable": true
+      },
+      "barsLight": {
+        "condition": "barsDoNotChangeSatAndLight.value == true",
+        "text": "Light",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "order": 114,
+        "value": 50,
+        "editable": true
+      },
+      "_text3": {
+        "type": "text",
+        "text": "<br><br><h4>⸺⸺⸺⸺⸺⸺⸺</h4>",
+        "order": 115
+      },
+      "_text4": {
         "text": "Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.0</h3>",
         "type": "text",
-        "order": 111
+        "order": 116
       }
     }
   }

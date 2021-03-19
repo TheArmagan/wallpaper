@@ -41,14 +41,16 @@ const config = {};
 function onConfigChange(_config) {
   
   Object.entries(_config).forEach(([key, value]) => {
-
+    if (key.startsWith("_")) return;
     switch (value?.type) {
       case "color": {
         try {
-          let vals = value.value.split(" ").map(i => (Number(i) * 255).toFixed(0));
-          config[key] = `rgb(${vals?.[0]}, ${vals?.[1]}, ${vals?.[2]})`;
+          let values = value.value.split(" ").map(i => Number((Number(i) * 255).toFixed(0)));
+          config[key] = `rgb(${values?.[0]}, ${values?.[1]}, ${values?.[2]})`;
+          config[key + "RGB"] = values;
         } catch {
           config[key] = "";
+          config[key + "RGB"].rgb = [0, 0, 0];
         }
         break;
       };
@@ -160,11 +162,13 @@ function onAudio(audioArray) {
 
   if (!shouldShow) return;
 
+  // 85
+
   gsap.to(".middle-ball", {
     boxShadow: `
-    0px 0px ${6 + audio.LOW * 36}px ${Math.min(Math.max(1, maxVolume * 2), 2) + audio.LOW}px whitesmoke, 
-    inset 0px 0px 0px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 4}px #F5F5F555,
-    inset 0px 0px ${audio.LOW * 60}px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 10}px whitesmoke
+    0px 0px ${6 + audio.LOW * 36}px ${Math.min(Math.max(1, maxVolume * 2), 2) + audio.LOW}px ${config.ballGlowColor},
+    inset 0px 0px 0px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 4}px rgba(${config.ballGlowColorRGB[0]}, ${config.ballGlowColorRGB[1]}, ${config.ballGlowColorRGB[2]}, 85),
+    inset 0px 0px ${audio.LOW * 60}px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 10}px ${config.ballGlowColor}
     `,
     scale: `${1 + audio.LOW / 4}`,
     duration: 0.1,
@@ -185,6 +189,10 @@ function onAudio(audioArray) {
     duration: 0
   });
 
+  let sat = config.barsDoNotChangeSatAndLight ? config.barsSaturation : NaNSafe(Math.min((isLoud ? 30 : 20) + maxVolume * 30, 50) + audio.LOW * 10);
+  let light = config.barsDoNotChangeSatAndLight ? config.barsLight : NaNSafe(((isLoud ? 30 : 20) + maxVolume * 30) + audio.LOW * 10);
+
+
   directions.forEach((direction) => {
     audio[direction].forEach((volume, index) => {
       let selector = `.bar-${direction}-${index}`;
@@ -194,7 +202,7 @@ function onAudio(audioArray) {
         ease: "linear"
       });
       gsap.to(selector, {
-        backgroundColor: `hsl(${NaNSafe(190 - (volume * 360))}, ${NaNSafe(Math.min((isLoud ? 30 : 20) + maxVolume * 30, 50) + audio.LOW * 10)}%, ${NaNSafe(((isLoud ? 30 : 20) + maxVolume * 30) + audio.LOW * 10)}%)`,
+        backgroundColor: `hsl(${NaNSafe(190 - (volume * 360))}, ${sat}%, ${light}%)`,
         duration: 1,
         ease: "linear"
       });
