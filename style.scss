@@ -23,7 +23,7 @@ body,
   background-position: center;
 }
 
-.bars {
+.vis {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,17 +31,17 @@ body,
   height: 100vh;
   display: flex;
 
-  &.bars-left {
+  &.left {
     align-items: flex-start;
     justify-content: center;
   }
 
-  &.bars-middle {
+  &.middle {
     align-items: center;
     justify-content: center;
   }
 
-  &.bars-right {
+  &.right {
     align-items: flex-end;
     justify-content: center;
   }

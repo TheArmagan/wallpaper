@@ -16,8 +16,8 @@ const debugElms = document.querySelectorAll(".debug");
 const ballElm = document.querySelector(".middle-ball");
 
 const barElms = {
-  left: document.querySelector(".bars-left"),
-  right: document.querySelector(".bars-right")
+  left: document.querySelector(".bars.left"),
+  right: document.querySelector(".bars.right")
 };
 
 let directions = ["left", "right"];
@@ -86,6 +86,16 @@ function onConfigChange(_config) {
       ballElm.setAttribute("style", "");
       break;
     }
+  }
+
+  if (config.barsHide) {
+    gsap.to(".bars", {
+      opacity: 0
+    })
+  } else {
+    gsap.to(".bars", {
+      opacity: 1
+    })
   }
 
   console.log(config);
@@ -189,25 +199,26 @@ function onAudio(audioArray) {
     duration: 0
   });
 
-  let sat = config.barsDoNotChangeSatAndLight ? config.barsSaturation : NaNSafe(Math.min((isLoud ? 30 : 20) + maxVolume * 30, 50) + audio.LOW * 10);
-  let light = config.barsDoNotChangeSatAndLight ? config.barsLight : NaNSafe(((isLoud ? 30 : 20) + maxVolume * 30) + audio.LOW * 10);
+  if (!config.barsHide) {
+    let sat = config.barsDoNotChangeSatAndLight ? config.barsSaturation : NaNSafe(Math.min((isLoud ? 30 : 20) + maxVolume * 30, 50) + audio.LOW * 10);
+    let light = config.barsDoNotChangeSatAndLight ? config.barsLight : NaNSafe(((isLoud ? 30 : 20) + maxVolume * 30) + audio.LOW * 10);
 
-
-  directions.forEach((direction) => {
-    audio[direction].forEach((volume, index) => {
-      let selector = `.bar-${direction}-${index}`;
-      gsap.to(selector, {
-        height: `${(16 + (volume * ((innerHeight / (isLoud ? 4 : 8)) - 16))) + audio.LOW * 16}`,
-        duration: 0.1,
-        ease: "linear"
-      });
-      gsap.to(selector, {
-        backgroundColor: `hsl(${NaNSafe(190 - (volume * 360))}, ${sat}%, ${light}%)`,
-        duration: 1,
-        ease: "linear"
-      });
+    directions.forEach((direction) => {
+      audio[direction].forEach((volume, index) => {
+        let selector = `.bar-${direction}-${index}`;
+        gsap.to(selector, {
+          height: `${(16 + (volume * ((innerHeight / (isLoud ? 4 : 8)) - 16))) + audio.LOW * 16}`,
+          duration: 0.1,
+          ease: "linear"
+        });
+        gsap.to(selector, {
+          backgroundColor: `hsl(${NaNSafe(190 - (volume * 360))}, ${sat}%, ${light}%)`,
+          duration: 1,
+          ease: "linear"
+        });
+      })
     })
-  })
+  }
 
 }
 

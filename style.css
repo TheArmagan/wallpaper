@@ -24,7 +24,7 @@ body,
   background-position: center;
 }
 
-.bars {
+.vis {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,7 +35,7 @@ body,
   display: flex;
 }
 
-.bars.bars-left {
+.vis.left {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -44,7 +44,7 @@ body,
           justify-content: center;
 }
 
-.bars.bars-middle {
+.vis.middle {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -53,7 +53,7 @@ body,
           justify-content: center;
 }
 
-.bars.bars-right {
+.vis.right {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
