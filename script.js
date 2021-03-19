@@ -98,6 +98,16 @@ function onConfigChange(_config) {
     })
   }
 
+  if (config.ballHide) {
+    gsap.to(".vis.middle", {
+      opacity: 0
+    })
+  } else {
+    gsap.to(".vis.middle", {
+      opacity: 1
+    })
+  }
+
   console.log(config);
 }
 
@@ -172,32 +182,32 @@ function onAudio(audioArray) {
 
   if (!shouldShow) return;
 
-  // 85
-
-  gsap.to(".middle-ball", {
-    boxShadow: `
+  if (!config.ballHide) {
+    gsap.to(".middle-ball", {
+      boxShadow: `
     0px 0px ${6 + audio.LOW * 36}px ${Math.min(Math.max(1, maxVolume * 2), 2) + audio.LOW}px ${config.ballGlowColor},
     inset 0px 0px 0px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 4}px rgba(${config.ballGlowColorRGB[0]}, ${config.ballGlowColorRGB[1]}, ${config.ballGlowColorRGB[2]}, 85),
     inset 0px 0px ${audio.LOW * 60}px ${Math.min(Math.max(1, maxVolume * 6), 2) + audio.LOW * 10}px ${config.ballGlowColor}
     `,
-    scale: `${1 + audio.LOW / 4}`,
-    duration: 0.1,
-    ease: "linear"
-  });
+      scale: `${1 + audio.LOW / 4}`,
+      duration: 0.1,
+      ease: "linear"
+    });
 
-  gsap.to(".middle-ball", {
-    opacity: `${config.ballDoNotHide ? 1 : isLoud ? Math.min(maxVolume * 10, 1) : 0}`,
-    duration: 1,
-    ease: "linear"
-  });
+    gsap.to(".middle-ball", {
+      opacity: `${config.ballDoNotHide ? 1 : isLoud ? Math.min(maxVolume * 10, 1) : 0}`,
+      duration: 1,
+      ease: "linear"
+    });
 
-  gsap.to(".middle-ball", {
-    x: audio.HIG > 0.3 ? (audio.LOW > 0.4 ? RD(R(0, audio.HIG * 10)) : RD(R(0, audio.HIG * 6))) : 0,
-    y: audio.HIG > 0.3 ? (audio.LOW > 0.4 ? RD(R(0, audio.HIG * 10)) : RD(R(0, audio.HIG * 6))) : 0,
+    gsap.to(".middle-ball", {
+      x: audio.HIG > 0.3 ? (audio.LOW > 0.4 ? RD(R(0, audio.HIG * 10)) : RD(R(0, audio.HIG * 6))) : 0,
+      y: audio.HIG > 0.3 ? (audio.LOW > 0.4 ? RD(R(0, audio.HIG * 10)) : RD(R(0, audio.HIG * 6))) : 0,
 
-    backgroundColor: config.ballBackgroundTransparent ? "#00000000" : config.ballBackgroundColor,
-    duration: 0
-  });
+      backgroundColor: config.ballBackgroundTransparent ? "#00000000" : config.ballBackgroundColor,
+      duration: 0
+    });
+  }
 
   if (!config.barsHide) {
     let sat = config.barsDoNotChangeSatAndLight ? config.barsSaturation : NaNSafe(Math.min((isLoud ? 30 : 20) + maxVolume * 30, 50) + audio.LOW * 10);

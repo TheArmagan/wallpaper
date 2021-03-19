@@ -56,7 +56,14 @@
         "text": "<br><br><h4>⸺ Ball Style ⸺⸺⸺</h4>",
         "order": 104
       },
+      "ballHide": {
+        "text": "Hide Ball",
+        "type": "bool",
+        "order": 105,
+        "value": false
+      },
       "ballBackgroundMode": {
+        "condition": "ballHide.value == false",
         "text": "Background Mode",
         "type": "combo",
         "options": [
@@ -70,71 +77,63 @@
           }
         ],
         "value": "CUSTOM_COLOR",
-        "order": 105
+        "order": 106
       },
       "ballBackgroundTransparent": {
-        "condition": "ballBackgroundMode.value == 'CUSTOM_COLOR'",
+        "condition": "ballHide.value == false && ballBackgroundMode.value == 'CUSTOM_COLOR'",
         "text": "Transparent Background",
         "type": "bool",
-        "order": 106,
+        "order": 107,
         "value": false
       },
       "ballBackgroundColor": {
-        "condition": "ballBackgroundMode.value == 'CUSTOM_COLOR' && !ballBackgroundTransparent.value",
+        "condition": "ballHide.value == false && (ballBackgroundMode.value == 'CUSTOM_COLOR' && !ballBackgroundTransparent.value)",
         "text": "Background Color",
         "type": "color",
-        "order": 107,
+        "order": 108,
         "value": "0.094 0.094 0.094"
       },
       "ballBackgroundImage": {
-        "condition": "ballBackgroundMode.value == 'CUSTOM_IMAGE'",
+        "condition": "ballHide.value == false && ballBackgroundMode.value == 'CUSTOM_IMAGE'",
         "text": "Background Image",
         "type": "file",
-        "order": 108
+        "order": 109
       },
       "ballDoNotHide": {
+        "condition": "ballHide.value == false",
         "text": "Don't Hide The Ball",
         "type": "bool",
-        "order": 109,
+        "order": 110,
         "value": false
       },
       "ballGlowColor": {
+        "condition": "ballHide.value == false",
         "text": "Glow Color",
         "type": "color",
-        "order": 110,
+        "order": 111,
         "value": "0.96 0.96 0.96"
       },
       "_text5": {
         "type": "text",
         "text": "<br><br><h4>⸺ Bars Style ⸺⸺⸺</h4>",
-        "order": 111
+        "order": 112
       },
       "barsHide": {
         "text": "Hide The Bars",
         "type": "bool",
-        "order": 112,
-        "value": false
-      },
-      "barsDoNotChangeSatAndLight": {
-        "text": "Don't Change Bar's Sat & Light",
-        "type": "bool",
         "order": 113,
         "value": false
       },
-      "barsSaturation": {
-        "condition": "barsDoNotChangeSatAndLight.value == true",
-        "text": "Saturation",
-        "type": "slider",
-        "min": 0,
-        "max": 100,
-        "step": 0.1,
+      "barsDoNotChangeSatAndLight": {
+        "condition": "barsHide.value == false",
+        "text": "Don't Change Bar's Sat & Light",
+        "type": "bool",
         "order": 114,
-        "value": 50,
-        "editable": true
+        "value": false
       },
-      "barsLight": {
-        "condition": "barsDoNotChangeSatAndLight.value == true",
-        "text": "Light",
+      "barsSaturation": {
+        "condition": "barsHide.value == false && barsDoNotChangeSatAndLight.value == true",
+        "text": "Saturation",
         "type": "slider",
         "min": 0,
         "max": 100,
@@ -143,15 +142,26 @@
         "value": 50,
         "editable": true
       },
+      "barsLight": {
+        "condition": "barsHide.value == false && barsDoNotChangeSatAndLight.value == true",
+        "text": "Light",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "order": 116,
+        "value": 50,
+        "editable": true
+      },
       "_text3": {
         "type": "text",
         "text": "<br><br><h4>⸺⸺⸺⸺⸺⸺⸺</h4>",
-        "order": 116
+        "order": 117
       },
       "_text4": {
-        "text": "Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.2</h3>",
+        "text": "Created by <a href=\"https://thearmagan.github.io/\">TheArmagan</a></h3><h6>Version: v0.1.21</h3>",
         "type": "text",
-        "order": 117
+        "order": 118
       }
     }
   }
